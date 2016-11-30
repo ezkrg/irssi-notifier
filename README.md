@@ -1,10 +1,9 @@
-Simple script for irssi to trigger Mac OS X 10.8's Notification Center
+Simple script for irssi to store messages in Redis
 ===
 
 Requirements
 ---
-* Mac OS X 10.8 or higher
-* [terminal-notifier](https://github.com/alloy/terminal-notifier)
+* redis-server
 
 Installation
 ---
@@ -17,6 +16,10 @@ Configuration
     /SET notifier_on_regex [regex]
     /SET notifier_channel_regex [regex]
     /SET notifier_on_privmsg <0|1>
+    /SET notifier_off_regex [regex]
+    /SET notifier_off_sender_regex [regex]
+    /SET notifier_redis_server 127.0.0.1:6379
+    /SET notifier_redis_password [password]
 
 Usage
 ---
@@ -31,6 +34,7 @@ Usage
  everything but jdewey
 
     /SET notifier_on_regex (?=^(?:(?!jdewey).)*$).*
+    /SET notifier_off_regex jdewey
 
  only notifier things for mychannel1 and mychannel2
 
@@ -40,16 +44,8 @@ Usage
 
     /SET notifier_on_privmsg 1 
 
-Didn't irssi-growl let me choose an icon?
----
-Yes, it did and still does, that is if you choose to use growl. But Mountain Lion's Notification Center doesn't let you specify a custom icon for a notification. To quote terminal-notifier's repository:
-
-> The Notification Center always uses the application’s own icon, there’s currently no way to specify a custom icon for a notification. The only way to use this tool with your own icon is to include a build of terminal-notifier with your icon instead.
-
-I will keep track of terminal-notifier's commits and if someone does find a way to specify an icon I will update this script as soon as possible.
-
 Author
 ---
-Patrick Kontschak `<patrick.kontschak@gmail.com>` 2012
+ezkrg 2016
 
-Forked from Nate Murray's [irssi-growl](https://github.com/jashmenn/irssi-growl).
+Forked from Nate Murray's [irssi-notifier](https://github.com/paddykontschak/irssi-notifier).
