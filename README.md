@@ -48,4 +48,4 @@ Author
 ---
 ezkrg 2016
 
-Forked from Nate Murray's [irssi-notifier](https://github.com/paddykontschak/irssi-notifier).
+Forked from Patrick Kontschak's [irssi-notifier](https://github.com/paddykontschak/irssi-notifier).
