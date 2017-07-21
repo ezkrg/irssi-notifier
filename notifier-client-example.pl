@@ -28,11 +28,11 @@ my $lua_script = qq(-- script irssi-notifier
 my ( $lua_script_sha1 ) = $redis->script_load($lua_script);
 
 sub do_notifier {
-    my @messages = $redis->evalsha($lua_script_sha1, 1, 'irssi', 10000)
+    my @messages = $redis->evalsha($lua_script_sha1, 1, 'irssi', 10000);
 
-    foreach my $message ( @messages ) {
-	    print $json . "\n";
-	    my $message = JSON->new->utf8(1)->decode($json);
+    foreach my $message_json ( @messages ) {
+	    print $message_json . "\n";
+	    my $message = JSON->new->utf8(1)->decode($message_json);
 	    $message->{'message'} =~ s/["';]//g;
 	    $message->{'message'} =~ s/</\\</g;
 	    # terminal-notifier -title title -message message -subtitle subtitle -contentImage https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Irssi_logo.svg/1000px-Irssi_logo.svg.png
